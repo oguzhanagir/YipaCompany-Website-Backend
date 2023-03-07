@@ -11,6 +11,18 @@ namespace Yipa.Controllers
             return View();
         }
 
+        public IActionResult Header()
+        {
+            return View();
+        }
+          
+
+        public IActionResult Footer()
+        {
+            return View();
+        }
+
+
        
     }
 }

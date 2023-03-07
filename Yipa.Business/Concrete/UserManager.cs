@@ -36,7 +36,27 @@ namespace Yipa.Business.Concrete
             }
         }
 
-        
+        public User GetUserById(int id)
+        {
+            var user = _unitOfWork.Users.Find(x => x.Id == id);
+            return user!;
+        }
+
+        public void UpdateUser(User p)
+        {
+            var user = _unitOfWork.Users.Find(x => x.Id == p.Id);
+            if (user != null)
+            {
+                user.FirstName = p.FirstName;
+                user.LastName = p.LastName;
+                user.Mail = p.Mail;
+                user.Password = p.Password;
+                user.RoleId = p.RoleId;
+                user.Id = p.Id;
+                _unitOfWork.Users.Update(user);
+                _unitOfWork.Save();
+            }
+        }
 
 
     }

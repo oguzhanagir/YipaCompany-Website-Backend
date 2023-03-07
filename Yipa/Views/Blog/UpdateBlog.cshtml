@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <form>
+        <div class="mb-10">
+        <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
+        <input type="text" class="form-control" placeholder="Başlık"/>
+        </div>
+        <div class="mb-10">
+        <label for="exampleFormControlInput1" class="required form-label">Tarih</label>
+        <input type="datetime-local" class="form-control " placeholder="Tarih"/>
+        </div>
+        <select class="form-select" aria-label="Select example">
+            <option>Yazar</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+
+        <label for="exampleFormControlInput1" class="required form-label">İçerik</label>
+         <div id="toolbar-container"></div>
+        <div class="mt-5 form-control" id="editor"></div>
+        <button href="#" class="btn btn-primary mt-5">Ekle</button>
+    </form>
+</div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/decoupled-document/ckeditor.js"></script>
+
+<script>
+    DecoupledEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+            const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+            toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

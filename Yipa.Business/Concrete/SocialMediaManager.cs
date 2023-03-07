@@ -48,14 +48,26 @@ namespace Yipa.Business.Concrete
             }
         }
 
-        public void UpdateSocialMedia(int id)
+
+        public void UpdateSocialMedia(SocialMedia p)
         {
-            var socialMedia = _unitOfWork.SocialMedias.Find(x => x.Id == id);
+            var socialMedia = _unitOfWork.SocialMedias.Find(x => x.Id == p.Id);
             if (socialMedia != null)
             {
+                socialMedia.Id = p.Id;
+                socialMedia.Name = p.Name;
+                socialMedia.Address = p.Address;
+                socialMedia.IconPath = p.IconPath;
+                
                 _unitOfWork.SocialMedias.Update(socialMedia);
                 _unitOfWork.Save();
             }
+        }
+
+        public SocialMedia GetSocialMediaById(int id)
+        {
+            var socialMedia = _unitOfWork.SocialMedias.Find(x => x.Id == id);
+            return socialMedia!;
         }
     }
 }

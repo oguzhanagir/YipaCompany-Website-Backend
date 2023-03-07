@@ -14,10 +14,7 @@ namespace Yipa.Entities.Concrete
         public string? Mail { get; set; }
         public string? Password { get; set; }
 
-#pragma warning disable CS8618 // Non-nullable property 'Blogs' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-        public List<Blog> Blogs { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'Blogs' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-
+        public List<Blog>? Blogs { get; set; }
         public int RoleId { get; set; }
         public Role? Role { get; set; }
     }

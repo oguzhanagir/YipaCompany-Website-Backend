@@ -39,17 +39,7 @@ namespace Yipa.Business.Concrete
             return validation;
         }
 
-        public void UpdateComment(int id)
-        {
-            var comment = _unitOfWork.Comments.Find(x => x.Id == id);
-
-            if (comment != null)
-            {
-                _unitOfWork.Comments.Update(comment);
-                _unitOfWork.Save();
-            }
-        }
-
+     
         public void DeleteComment(int id)
         {
             var comment = _unitOfWork.Comments.Find(x => x.Id == id);

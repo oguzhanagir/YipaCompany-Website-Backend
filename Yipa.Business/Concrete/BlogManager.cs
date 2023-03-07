@@ -41,7 +41,7 @@ namespace Yipa.Business.Concrete
 
         public void UpdateBlog(Blog p)
         {
-            var blog = _unitOfWork.Blogs.Find(x => x.Id == blog.Id);
+            var blog = _unitOfWork.Blogs.Find(x => x.Id == p.Id);
             if (blog != null)
             {
                 blog!.Title = p.Title;

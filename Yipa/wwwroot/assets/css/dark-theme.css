@@ -1,0 +1,123 @@
+body {
+    background-color: #222222;
+    font-family: sans-serif;
+}
+
+/* Navbar Start  */
+
+.menu-items li a{ 
+    color: #FFFFFF !important;
+    margin-left: 20px;
+    font-weight: 700;
+}
+
+.navbar-social-media-circle{
+    color: #1B6B84;  
+}
+
+/* Navbar End */
+
+/* Header Start */
+
+.header-main{
+    background-color: #111111;
+}
+
+.dark-background-content{
+    background-color: #111111;
+}
+
+.header-top-title{
+    color: #FFFFFF;
+}
+
+.header-text{
+    color: #FFFFFFA6;
+}
+
+.header-button{
+    background-color: #1B6B84;
+    size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+/* Header End */
+
+/* About Start */
+
+.about-main{
+    margin-top: 100px;
+}
+
+.about-title{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.about-subtitle{
+    color:#FFFFFF;
+    font-size: 20px;
+}
+
+.about-text{
+    color: #FFFFFFA3;
+    font-weight: 600;
+}
+
+.button-light{
+    color: #FFFFFF !important;
+    border-radius: 8px;
+    size: 20px;
+    font-weight: 700;
+    background-color: #1B6B84;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button-trans{
+    color: #FFFFFF !important;
+    border-radius: 8px;
+    size: 20px;
+    font-weight: 700;
+    background-color: #1B6B84;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* About End */
+
+/* How We Work Start */
+
+.how-work{
+    margin-top: 140px;
+}
+
+/* How We Work End */
+
+/* Features Start  */
+
+.features{
+    margin-top: 150px;
+}
+
+.card-features{
+    border-color: #F3D1BF !important;
+    border-width: 0.1em !important;
+    border-radius: 10px;
+    background-color: #333333;
+}
+
+/* Features End */
+
+.text{
+    color: #FFFFFFA3;
+}
+
+.get-started{
+    background-color: #1B6B84;
+    padding: 60px;
+    border-radius: 16px;
+}
+
+.faq-reactangle{
+    /* Add styles for FAQ rectangle here */
+}

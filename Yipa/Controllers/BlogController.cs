@@ -18,6 +18,30 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+        public IActionResult BlogHeader()
+        {
+            return View();
+        }
+        public IActionResult BlogDetails()
+        {
+            return View();
+        }
+
+        public IActionResult BlogsList()
+        {
+            return View();
+        }
+
+        public IActionResult PopularBlogs()
+        {
+            return View();
+        }
+
+        public IActionResult LatesBlog()
+        {
+            return View();
+
+        }
         public IActionResult AdminBlogList()
         {
             var blogList = _blogManager.GetAll();
@@ -35,6 +59,19 @@ namespace Yipa.UI.Controllers
         }
 
         [HttpGet]
+        public IActionResult AddBlog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBlog(Blog p)
+        {
+            _blogManager.AddBlog(p);
+            return RedirectToAction("AdminBlogList");
+        }
+
+        [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
             var blog = _blogManager.GetBlogId(id);
@@ -48,13 +85,14 @@ namespace Yipa.UI.Controllers
             return RedirectToAction("AdminBlogList");
         }
 
-
         public IActionResult DeleteBlog(int id)
         {
             _blogManager.DeleteBlog(id);
             return RedirectToAction("AdminBlogList");
         }
 
+
+        
 
     }
 }

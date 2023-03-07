@@ -16,11 +16,28 @@ builder.Services.AddDbContext<YipaDbContext>(options =>
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+
+//Businees Classes
 builder.Services.AddScoped<AboutManager>();
 builder.Services.AddScoped<BlogManager>();
+builder.Services.AddScoped<CommentManager>();
+builder.Services.AddScoped<ContactManager>();
+builder.Services.AddScoped<NewsletterManager>();
+builder.Services.AddScoped<RoleManager>();
+builder.Services.AddScoped<SocialMediaManager>();
+builder.Services.AddScoped<UserManager>();
 
 
+
+//Fluent Validation
+builder.Services.AddTransient<IValidator<About>, AboutValidation>();
 builder.Services.AddTransient<IValidator<Blog>, BlogValidation>();
+builder.Services.AddTransient<IValidator<Comment>, CommentValidation>();
+builder.Services.AddTransient<IValidator<Contact>, ContactValidation>();
+builder.Services.AddTransient<IValidator<Newsletter>, NewsletterValidation>();
+builder.Services.AddTransient<IValidator<Role>, RoleValidation>();
+builder.Services.AddTransient<IValidator<SocialMedia>, SocialMediaValidation>();
+builder.Services.AddTransient<IValidator<User>, UserValdiation>();
 
 
 
