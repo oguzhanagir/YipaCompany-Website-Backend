@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Yipa.Core.Abstract;
@@ -13,6 +14,7 @@ namespace Yipa.Business.Concrete
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidator<User> _validator;
+      
 
         public UserManager(IUnitOfWork unitOfWork, IValidator<User> validator)
         {
@@ -57,6 +59,8 @@ namespace Yipa.Business.Concrete
                 _unitOfWork.Save();
             }
         }
+
+      
 
 
     }

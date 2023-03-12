@@ -73,6 +73,12 @@ namespace Yipa.Business.Concrete
             return blog!;
         }
 
+        public IEnumerable<Blog> LatesBlogList()
+        {
+            var latesBlogs = _unitOfWork.Blogs.GetAll(); //Lates Blog Eklenecek
+            return latesBlogs;
+        }
+
       
     }
 }

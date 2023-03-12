@@ -5,7 +5,8 @@
 }
 
 <div class="row">
-    <form>
+        @using (Html.BeginForm("UpdateBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
         <div class="mb-10">
         <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
         <input type="text" class="form-control" placeholder="Başlık"/>
@@ -25,7 +26,7 @@
          <div id="toolbar-container"></div>
         <div class="mt-5 form-control" id="editor"></div>
         <button href="#" class="btn btn-primary mt-5">Ekle</button>
-    </form>
+}
 </div>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/decoupled-document/ckeditor.js"></script>

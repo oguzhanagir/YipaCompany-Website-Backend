@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Yipa.Business.Concrete;
 using Yipa.Business.Validation.FluentValidation;
@@ -16,10 +17,11 @@ builder.Services.AddDbContext<YipaDbContext>(options =>
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
 //Businees Classes
 builder.Services.AddScoped<AboutManager>();
+builder.Services.AddScoped<AuthManager>();
 builder.Services.AddScoped<BlogManager>();
+builder.Services.AddScoped<CategoryManager>();
 builder.Services.AddScoped<CommentManager>();
 builder.Services.AddScoped<ContactManager>();
 builder.Services.AddScoped<NewsletterManager>();
@@ -38,10 +40,13 @@ builder.Services.AddTransient<IValidator<Newsletter>, NewsletterValidation>();
 builder.Services.AddTransient<IValidator<Role>, RoleValidation>();
 builder.Services.AddTransient<IValidator<SocialMedia>, SocialMediaValidation>();
 builder.Services.AddTransient<IValidator<User>, UserValdiation>();
+builder.Services.AddTransient<IValidator<Category>, CategoryValidation>();
 
 
 
 
+
+builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddSingleton<ILoggerFactory, LoggerFactory>();
@@ -52,7 +57,11 @@ builder.Services.AddLogging(loggingBuilder =>
 });
 
 
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

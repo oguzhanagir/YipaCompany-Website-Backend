@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Yipa.Business.Concrete;
 using Yipa.Entities.Concrete;
 
@@ -18,26 +19,29 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult AdminAboutList()
         {
-            var blogList = _aboutManager.GetAll();
-            return View(blogList);
+            var aboutList = _aboutManager.GetAll();
+            return View(aboutList);
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult AddAbout()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddAbout(About about)
         {
             _aboutManager.AddAbout(about);
             return RedirectToAction("AdminAboutList");
         }
-
+        
+        [Authorize]
         [HttpGet]
         public IActionResult UpdateAbout(int id)
         {
@@ -45,6 +49,7 @@ namespace Yipa.UI.Controllers
             return View(aboutList);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult UpdateAbout(About about)
         {

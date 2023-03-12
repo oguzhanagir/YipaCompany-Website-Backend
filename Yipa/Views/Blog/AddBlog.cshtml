@@ -1,19 +1,27 @@
-﻿
+﻿@model Yipa.Entities.Concrete.Blog
+
 @{
     ViewData["Title"] = "AddBlog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="row">
-    <form>
+    @using (Html.BeginForm("AddBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
         <div class="mb-10">
         <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
-        <input type="text" class="form-control" placeholder="Başlık"/>
+        <input type="text" name="Title" class="form-control" placeholder="Başlık"/>
         </div>
         <div class="mb-10">
         <label for="exampleFormControlInput1" class="required form-label">Tarih</label>
-        <input type="datetime-local" class="form-control " placeholder="Tarih"/>
+        <input type="datetime-local" name="PublicDate" class="form-control " placeholder="Tarih"/>
         </div>
+
+         <label asp-for="ImagePath" class="control-label"></label>
+        <input asp-for="ImagePath" type="file" class="form-control" />
+
+        <br />
+
         <select class="form-select" aria-label="Select example">
             <option>Yazar</option>
             <option value="1">One</option>
@@ -21,15 +29,24 @@
             <option value="3">Three</option>
         </select>
 
+     
         <label for="exampleFormControlInput1" class="required form-label">İçerik</label>
+        
          <div id="toolbar-container"></div>
-        <div class="mt-5 form-control" id="editor"></div>
+
+            <textarea name="Content" id="editor">
+            &lt;p&gt;This is some sample content.&lt;/p&gt;
+           </textarea>
+
+
         <button href="#" class="btn btn-primary mt-5">Ekle</button>
-    </form>
+}
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/decoupled-document/ckeditor.js"></script>
+ <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 
+
+@*
 <script>
     DecoupledEditor
         .create( document.querySelector( '#editor' ) )
@@ -41,4 +58,12 @@
         .catch( error => {
             console.error( error );
         } );
-</script>
+</script>*@
+
+         <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>

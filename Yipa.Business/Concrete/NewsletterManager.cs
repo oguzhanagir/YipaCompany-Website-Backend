@@ -38,20 +38,6 @@ namespace Yipa.Business.Concrete
             return validation;
         }
 
-        public void UpdateNewsletter(Newsletter p)
-        {
-            var newsletter = _unitOfWork.Newsletters.Find(x => x.Id == p.Id);
-            if (newsletter != null)
-            {
-                newsletter.Id = p.Id;
-                newsletter.Title = p.Title;
-                newsletter.Content = p.Content;
-            
-                _unitOfWork.Newsletters.Update(newsletter);
-                _unitOfWork.Save();
-            }
-        }
-
         public void DeleteNewsletter(int id)
         {
             var newsletter = _unitOfWork.Newsletters.Find(x => x.Id == id);

@@ -18,6 +18,16 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+        public IActionResult HeaderContact()
+        {
+            return View();
+        }
+
+        public IActionResult ContactDetails()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult AddContact()
         {
@@ -34,7 +44,7 @@ namespace Yipa.UI.Controllers
         {
             return View();
         }
-        public IActionResult ContactBanner()
+        public IActionResult ContactFAQ()
         {
             return View();
         }

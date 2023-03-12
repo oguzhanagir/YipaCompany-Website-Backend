@@ -1,0 +1,93 @@
+﻿@model Yipa.Entities.Concrete.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0pq" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #CACFE8;
+            font-family: sans-serif;
+        }
+        .login-container{
+            margin-top: 50px;
+            margin-bottom: 50px;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+        .login-header{
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #21264A;
+            text-align: center;
+        }
+        .form-label{
+            color: #21264A;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .form-control{
+            border-radius: 8px;
+            border-color: #1B6B84;
+            box-shadow: none;
+        }
+        .login-button{
+            background-color: #1B6B84;
+            color: #FFFFFF;
+            border-radius: 10px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px 0;
+            border: none;
+        }
+        .login-button:hover{
+            background-color: #104454;
+        }
+        .register-link{
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .register-link a{
+            color: #1B6B84;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .register-link a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container m-auto">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-12 login-container">
+                <div class="login-header">Login</div>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn login-button">Login</button>
+                </form>
+                <div class="register-link">Don't have an account? <a href="#">Register here</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Yipa.Business.Concrete;
 using Yipa.Entities.Concrete;
 
@@ -7,10 +8,11 @@ namespace Yipa.UI.Controllers
     public class BlogController : Controller
     {
         private readonly BlogManager _blogManager;
-
-        public BlogController(BlogManager blogManager)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public BlogController(BlogManager blogManager, IHttpContextAccessor httpContextAccessor)
         {
             _blogManager = blogManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index()
@@ -22,14 +24,18 @@ namespace Yipa.UI.Controllers
         {
             return View();
         }
-        public IActionResult BlogDetails()
+
+        public IActionResult BlogDetails(int id)
         {
-            return View();
+            var blog = _blogManager.GetBlogId(id);
+            return View(blog);
         }
 
-        public IActionResult BlogsList()
+        public IActionResult BlogList()
         {
-            return View();
+            var blogList = _blogManager.GetAll();
+        
+            return View(blogList);
         }
 
         public IActionResult PopularBlogs()
@@ -39,9 +45,13 @@ namespace Yipa.UI.Controllers
 
         public IActionResult LatesBlog()
         {
-            return View();
+            var latesBlogs = _blogManager.LatesBlogList();
+            return View(latesBlogs);
 
         }
+
+
+        [Authorize]
         public IActionResult AdminBlogList()
         {
             var blogList = _blogManager.GetAll();
@@ -58,19 +68,32 @@ namespace Yipa.UI.Controllers
             return PartialView();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult AddBlog()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult AddBlog(Blog p)
+        public IActionResult AddBlog(Blog p, IFormFile file)
         {
+            if (file != null && file.Length > 0)
+            {
+                string dosyaAdi = Path.GetFileName(file.FileName);
+                string yol = "~/Image/" + dosyaAdi;
+                using (var stream = new FileStream(Path.Combine("wwwroot", yol), FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                p.ImagePath = "/Image/" + dosyaAdi;
+            }
             _blogManager.AddBlog(p);
             return RedirectToAction("AdminBlogList");
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
@@ -78,6 +101,7 @@ namespace Yipa.UI.Controllers
             return View(blog);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult UpdateBlog(Blog blog)
         {
@@ -85,6 +109,7 @@ namespace Yipa.UI.Controllers
             return RedirectToAction("AdminBlogList");
         }
 
+        [Authorize]
         public IActionResult DeleteBlog(int id)
         {
             _blogManager.DeleteBlog(id);

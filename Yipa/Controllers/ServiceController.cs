@@ -9,6 +9,7 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+
         public IActionResult ServiceMainDetails()
         {
             return View();

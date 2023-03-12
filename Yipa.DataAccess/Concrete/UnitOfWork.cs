@@ -11,7 +11,7 @@ namespace Yipa.DataAccess.Concrete
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ILogger _logger;
-        private YipaDbContext _dbContext;
+        private readonly YipaDbContext _dbContext;
 
         public UnitOfWork(YipaDbContext dbContext, ILoggerFactory loggerFactory)
         {
@@ -25,6 +25,8 @@ namespace Yipa.DataAccess.Concrete
             Roles = new RoleRepository(_dbContext, _logger);
             SocialMedias = new SocialMediaRepository(_dbContext, _logger);
             Users = new UserRepository(_dbContext, _logger);
+            Categories = new CategoryRepository(_dbContext, _logger);
+
         }
 
         public IAboutRepository Abouts { get; private set; }
@@ -42,6 +44,7 @@ namespace Yipa.DataAccess.Concrete
         public ISocialMediaRepository SocialMedias { get; private set; }
 
         public IUserRepository Users { get; private set; }
+        public ICategoryRepository Categories { get; private set; }
 
         public void Save()
         {

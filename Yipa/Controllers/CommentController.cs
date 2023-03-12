@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Yipa.Business.Concrete;
 using Yipa.Entities.Concrete;
 
@@ -18,18 +19,21 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult AdminCommentList()
         {
             var commentList = _commentManager.GetAll();
             return View(commentList);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult AddComment()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {

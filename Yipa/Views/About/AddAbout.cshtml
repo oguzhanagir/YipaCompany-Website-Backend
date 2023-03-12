@@ -4,5 +4,21 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>AddAbout</h1>
+
+<div class="row">
+    @using (Html.BeginForm("AddAbout", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        <div class="mb-10">
+        <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
+        <input type="text" name="Title" class="form-control" placeholder="Başlık"/>
+        </div>
+            
+        <div class="mb-10">
+        <label for="exampleFormControlInput1" class="required form-label">Tarih</label>
+        <input type="datetime-local" name="PublicDate" class="form-control " placeholder="Tarih"/>
+        </div>
+
+        <button href="#" class="btn btn-primary mt-5">Ekle</button>
+}
+</div>
 

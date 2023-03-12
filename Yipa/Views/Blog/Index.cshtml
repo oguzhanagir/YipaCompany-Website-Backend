@@ -1,11 +1,12 @@
-﻿
+﻿@model Yipa.Entities.Concrete.Blog
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 @Html.Partial("~/Views/Blog/BlogHeader.cshtml")
 @Html.Partial("~/Views/Blog/PopularBlogs.cshtml")
-@Html.Partial("~/Views/Blog/BlogsList.cshtml")
-@Html.Partial("~/Views/Contact/ContactBanner.cshtml")
+@Html.Partial("~/Views/Blog/BlogList.cshtml")
+@Html.Partial("~/Views/Newsletter/MainNewsletter.cshtml")
 @Html.Partial("~/Views/Home/Footer.cshtml")

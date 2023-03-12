@@ -41,7 +41,7 @@ namespace Yipa.UI.Controllers
         public IActionResult UpdateSocialMedia(int id)
         {
             var socialMedia = _socialMediaManager.GetSocialMediaById(id);
-            return View();
+            return View(socialMedia);
         }
 
         [HttpPost]

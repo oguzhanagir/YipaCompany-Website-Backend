@@ -23,11 +23,6 @@ namespace Yipa.UI.Controllers
             return View(newsletterList);
         }
 
-        [HttpGet]
-        public IActionResult AddNewsletter()
-        {
-            return View();
-        }
 
         [HttpPost]
         public IActionResult AddNewsletter(Newsletter newsletter)
@@ -43,19 +38,6 @@ namespace Yipa.UI.Controllers
             return RedirectToAction("AdminNewsletterList");
         }
 
-        [HttpGet]
-        public IActionResult UpdateNewsletter(int id)
-        {
-            var newsletter = _newsletterManager.GetNewsletterById(id);
-            return View(newsletter);
-        }
-
-        [HttpPost]
-        public IActionResult UpdateNewsletter(Newsletter newsletter)
-        {
-            _newsletterManager.UpdateNewsletter(newsletter);
-            return View();
-        }
 
         public IActionResult MainNewsletter()
         {
