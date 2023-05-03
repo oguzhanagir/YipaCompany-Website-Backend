@@ -42,6 +42,11 @@ namespace Yipa.DataAccess.Concrete
             return _dbset.AsEnumerable();
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbset.ToListAsync();
+        }
+
         public T GetById(int id)
         {
             return _dbset.Find(id)!;

@@ -17,6 +17,7 @@ namespace Yipa.Core.Abstract
         ISocialMediaRepository SocialMedias { get; }
         IUserRepository Users { get; }
         ICategoryRepository Categories { get; }
+        IServiceRepository Services { get; }
 
         void Save();
     }

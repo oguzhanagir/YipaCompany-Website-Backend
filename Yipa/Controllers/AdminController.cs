@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Yipa.UI.Controllers
 {
-    [Authorize]
+   
     public class AdminController : Controller
     {
         public IActionResult Index()

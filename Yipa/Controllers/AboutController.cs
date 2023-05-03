@@ -35,8 +35,19 @@ namespace Yipa.UI.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult AddAbout(About about)
+        public async Task<IActionResult> AddAbout(About about, IFormFile file)
         {
+            if (file != null && file.Length > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/services", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                about.ImagePath = filePath;
+            }
             _aboutManager.AddAbout(about);
             return RedirectToAction("AdminAboutList");
         }

@@ -1,8 +1,29 @@
-﻿
+﻿@model Yipa.Entities.Concrete.About
 @{
     ViewData["Title"] = "UpdateAbout";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>UpdateAbout</h1>
+<div class="row">
+    @using (Html.BeginForm("UpdateAbout", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+       @Html.Label("Servis Başlığı")
+        @Html.TextBoxFor(x=>x.Title, new { @class = "form-control input-default" })
+           
+         @Html.Label("Resim")
+        @Html.TextBoxFor(x=>x.ImagePath, new { @class = "form-control input-default" })
+
+         @*<label asp-for="ImagePath" class="control-label"></label>
+        <input name="file" type="file" class="form-control" />*@
+
+        <br />
+
+         @Html.Label("İçerik")
+        @Html.TextBoxFor(x=>x.Content, new { @class = "form-control input-default" })
+
+       
+
+        <button href="#" class="btn btn-primary mt-5" type="submit">Ekle</button>
+}
+</div>
 

@@ -26,6 +26,7 @@ namespace Yipa.DataAccess.Concrete
             SocialMedias = new SocialMediaRepository(_dbContext, _logger);
             Users = new UserRepository(_dbContext, _logger);
             Categories = new CategoryRepository(_dbContext, _logger);
+            Services = new ServiceRepository(_dbContext, _logger);
 
         }
 
@@ -45,6 +46,7 @@ namespace Yipa.DataAccess.Concrete
 
         public IUserRepository Users { get; private set; }
         public ICategoryRepository Categories { get; private set; }
+        public IServiceRepository Services { get; private set; }
 
         public void Save()
         {

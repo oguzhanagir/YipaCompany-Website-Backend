@@ -27,6 +27,12 @@ namespace Yipa.Business.Concrete
             return blogList;
         }
 
+        public async Task<IEnumerable<Blog>> GetAllAsync()
+        {
+            var blogList = await _unitOfWork.Blogs.GetAllAsync();
+            return blogList;
+        }
+
         public ValidationResult AddBlog(Blog blog)
         {
             var validation = _validator.Validate(blog);
@@ -75,10 +81,22 @@ namespace Yipa.Business.Concrete
 
         public IEnumerable<Blog> LatesBlogList()
         {
-            var latesBlogs = _unitOfWork.Blogs.GetAll(); //Lates Blog Eklenecek
-            return latesBlogs;
+            var latestBlogs = _unitOfWork.Blogs.GetAll().OrderByDescending(b => b.PublicDate).Take(5);
+            return latestBlogs;
         }
 
-      
+        public IEnumerable<User> GetUsers()
+        {
+            var userList = _unitOfWork.Users.GetAll();
+            return userList;
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            var categoryList = _unitOfWork.Categories.GetAll();
+            return categoryList;
+        }
+
+
     }
 }

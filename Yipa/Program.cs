@@ -1,6 +1,9 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Yipa.Business.Concrete;
 using Yipa.Business.Validation.FluentValidation;
 using Yipa.Core.Abstract;
@@ -30,7 +33,6 @@ builder.Services.AddScoped<SocialMediaManager>();
 builder.Services.AddScoped<UserManager>();
 
 
-
 //Fluent Validation
 builder.Services.AddTransient<IValidator<About>, AboutValidation>();
 builder.Services.AddTransient<IValidator<Blog>, BlogValidation>();
@@ -43,6 +45,14 @@ builder.Services.AddTransient<IValidator<User>, UserValdiation>();
 builder.Services.AddTransient<IValidator<Category>, CategoryValidation>();
 
 
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+
+     
+});
 
 
 
@@ -57,11 +67,9 @@ builder.Services.AddLogging(loggingBuilder =>
 });
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie(options =>
-{
-    options.LoginPath = "/Auth/Login";
-});
+builder.Services.AddAuthorization();
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -76,6 +84,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -8,16 +8,18 @@ namespace Yipa.UI.Controllers
     public class BlogController : Controller
     {
         private readonly BlogManager _blogManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public BlogController(BlogManager blogManager, IHttpContextAccessor httpContextAccessor)
+        private readonly IWebHostEnvironment _environment;
+ 
+        public BlogController(BlogManager blogManager, IWebHostEnvironment environment)
         {
             _blogManager = blogManager;
-            _httpContextAccessor = httpContextAccessor;
+            _environment = environment;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var blogList = _blogManager.GetAll();
+            return View(blogList);
         }
 
         public IActionResult BlogHeader()
@@ -31,16 +33,11 @@ namespace Yipa.UI.Controllers
             return View(blog);
         }
 
-        public IActionResult BlogList()
-        {
-            var blogList = _blogManager.GetAll();
-        
-            return View(blogList);
-        }
-
+      
         public IActionResult PopularBlogs()
         {
-            return View();
+            var blogList = _blogManager.GetAll();
+            return View(blogList);
         }
 
         public IActionResult LatesBlog()
@@ -72,23 +69,27 @@ namespace Yipa.UI.Controllers
         [HttpGet]
         public IActionResult AddBlog()
         {
+            ViewBag.Authors = _blogManager.GetUsers();
+            ViewBag.Categories = _blogManager.GetCategories();
             return View();
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult AddBlog(Blog p, IFormFile file)
+        public async Task<IActionResult> AddBlog(Blog p, IFormFile file)
         {
             if (file != null && file.Length > 0)
             {
-                string dosyaAdi = Path.GetFileName(file.FileName);
-                string yol = "~/Image/" + dosyaAdi;
-                using (var stream = new FileStream(Path.Combine("wwwroot", yol), FileMode.Create))
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    file.CopyTo(stream);
+                    await file.CopyToAsync(fileStream);
                 }
-                p.ImagePath = "/Image/" + dosyaAdi;
+                p.ImagePath = filePath;
             }
+            p.Content = Request.Form["Content"];
             _blogManager.AddBlog(p);
             return RedirectToAction("AdminBlogList");
         }

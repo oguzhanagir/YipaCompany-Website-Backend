@@ -1,11 +1,8 @@
-﻿@model IEnumerable<Yipa.Entities.Concrete.About>
+﻿@model IEnumerable<Yipa.Entities.Concrete.Service>
 @{
-    ViewData["Title"] = "AdminAboutList";
+    ViewData["Title"] = "AdminServiceList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-
-
 <div class="row gy-5 g-xl-8">
 	<!--begin::Col-->
 	<div class="col-xl-8">
@@ -14,11 +11,10 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 pt-5">
 				<h3 class="card-title align-items-start flex-column">
-					<span class="card-label fw-bolder fs-3 mb-1">Hakkımda Listesi</span>
-	
+					<span class="card-label fw-bolder fs-3 mb-1">Servis Listesi</span>
 				</h3>
-				<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Blog Ekle">
-					<a href="/About/AddAbout" class="btn btn-sm btn-light-primary">
+				<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Servis Ekle">
+					<a href="/Service/AddService" class="btn btn-sm btn-light-primary">
 					<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 					<span class="svg-icon svg-icon-3">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -26,7 +22,7 @@
 							<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
 						</svg>
 					</span>
-					<!--end::Svg Icon-->Yeni Hakkımda</a>
+					<!--end::Svg Icon-->Yeni Servis</a>
 				</div>
 			</div>
 			<!--end::Header-->
@@ -44,7 +40,7 @@
 										<input class="form-check-input" type="checkbox" value="1" data-kt-check="true" data-kt-check-target=".widget-9-check" />
 									</div>
 								</th>
-								<th class="min-w-100px">Hakkımda Başlığı</th>
+								<th class="min-w-100px">Servis Başlığı</th>
 							
 							</tr>
 						</thead>
@@ -66,8 +62,9 @@
 										<td>
 											<span href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">@item.Title</span>
 										</td>
+
 										<td>
-											<a href="/About/UpdateAbout/@item.Id" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+											<a href="/Service/UpdateService/@item.Id" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 													<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 													<span class="svg-icon svg-icon-3">
 														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -77,11 +74,23 @@
 													</span>
 													<!--end::Svg Icon-->
 												</a>
+												<a href="/Service/DeleteService/@item.Id" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+													<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+													<span class="svg-icon svg-icon-3">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
+															<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
+															<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
+														</svg>
+													</span>
+													<!--end::Svg Icon-->
+												</a>
 										</td>
-									
 									</tr>
 							}
 							}
+									
+
 						</tbody>
 						<!--end::Table body-->
 					</table>

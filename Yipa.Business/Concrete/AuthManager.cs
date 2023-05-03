@@ -18,7 +18,7 @@ namespace Yipa.Business.Concrete
             _unitOfWork = unitOfWork;
         }
 
-        public  User GetUserByEmailAndPasswordAsync(string email, string password)
+        public  User GetUserByEmailAndPasswordAsync(string email)
         {
             var user =  _unitOfWork.Users.Find(x => x.Mail == email);
 
@@ -27,7 +27,7 @@ namespace Yipa.Business.Concrete
                 return user;
             }
 
-            return null;
+            return null!;
         }
     }
 }

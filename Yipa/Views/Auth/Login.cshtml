@@ -1,4 +1,4 @@
-﻿@model Yipa.Entities.Concrete.LoginViewModel
+﻿@model Yipa.Entities.Concrete.User
 @{
     Layout = null;
 }
@@ -77,11 +77,17 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        <input type="email" class="form-control" id="email" name="Mail" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" id="password" name="Password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" asp-for="KeepLoggedIn" />
+                            Keep Me
+                        </label>
                     </div>
                     <button type="submit" class="btn login-button">Login</button>
                 </form>

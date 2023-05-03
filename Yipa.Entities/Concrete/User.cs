@@ -13,6 +13,7 @@ namespace Yipa.Entities.Concrete
         public string? LastName { get; set; }
         public string? Mail { get; set; }
         public string? Password { get; set; }
+        public bool KeepLoggedIn { get; set; }
 
         public List<Blog>? Blogs { get; set; }
         public int RoleId { get; set; }
