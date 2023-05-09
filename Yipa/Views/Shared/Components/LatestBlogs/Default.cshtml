@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Yipa.Entities.Concrete.Blog>
+
+<div class="lates-blog" style="margin-top:100px;" id="latestBlogs">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <h2 class="about-title" style="font-size: 44px;">
+                    Latest Blog
+                    Articles
+                </h2>
+            </div>
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-end">
+                <button class="btn button-light  pl-4 pr-4 pt-2 pb-2 mt-3">Discover All</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <a href="/Blog/BlogDetails/@item.Id">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <img class="img-fluid" src="@item.ImagePath" alt="">
+                        <p class="about-subtitle mt-3">@item.CategoryId</p>
+                        <h4 class="about-title pr-3" style="font-size: 24px;">@item.Title</h4>
+                        <p class="about-text mt-3">5 Nov, 2021</p>
+                    </div>
+                </a>
+
+            }
+
+        </div>
+    </div>
+</div>

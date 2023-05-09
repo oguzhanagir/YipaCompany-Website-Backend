@@ -1,0 +1,20 @@
+﻿@model Yipa.Entities.Concrete.About
+
+
+<!-- Main Page About Start -->
+<div id="aboutMain" class="about-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <img alt="Hakkımda Görseli" class="w-75 img-fluid" src="@Model.ImagePath">
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <h2 class="about-title mt-4" style="font-size: 48px;">Hakkımızda</h2>
+                <h2 class="about-subtitle mt-4">@Model.Title</h2>
+                <p class="about-text mt-4">@Model.Content</p>
+                <button class="btn button-light  pl-4 pr-4 pt-2 pb-2">Hakkımızda</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Page About End -->

@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -25,7 +20,7 @@ namespace Yipa.Business.Concrete
             var serviceList = _unitOfWork.Services.GetAll();
             return serviceList;
         }
- 
+
 
         public ValidationResult AddService(Service service)
         {
@@ -46,7 +41,7 @@ namespace Yipa.Business.Concrete
             {
                 service!.Title = p.Title;
                 service.Content = p.Content;
-              
+
                 _unitOfWork.Services.Update(service);
                 _unitOfWork.Save();
             }

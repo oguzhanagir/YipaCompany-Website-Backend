@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -21,7 +16,7 @@ namespace Yipa.Business.Concrete
             _validator = validator;
         }
 
-        public IEnumerable<SocialMedia> GetAll() 
+        public IEnumerable<SocialMedia> GetAll()
         {
             var socialMediaList = _unitOfWork.SocialMedias.GetAll();
             return socialMediaList;
@@ -40,7 +35,7 @@ namespace Yipa.Business.Concrete
 
         public void DeleteSocialMedia(int id)
         {
-            var socialMedia = _unitOfWork.SocialMedias.Find(x=>x.Id == id);
+            var socialMedia = _unitOfWork.SocialMedias.Find(x => x.Id == id);
             if (socialMedia != null)
             {
                 _unitOfWork.SocialMedias.Remove(socialMedia);
@@ -58,7 +53,7 @@ namespace Yipa.Business.Concrete
                 socialMedia.Name = p.Name;
                 socialMedia.Address = p.Address;
                 socialMedia.IconPath = p.IconPath;
-                
+
                 _unitOfWork.SocialMedias.Update(socialMedia);
                 _unitOfWork.Save();
             }

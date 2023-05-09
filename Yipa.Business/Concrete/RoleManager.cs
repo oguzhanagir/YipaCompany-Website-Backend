@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -40,7 +35,7 @@ namespace Yipa.Business.Concrete
 
         public void DeleteRole(int id)
         {
-            var role = _unitOfWork.Roles.Find(x=>x.Id == id);
+            var role = _unitOfWork.Roles.Find(x => x.Id == id);
             if (role != null)
             {
                 _unitOfWork.Roles.Remove(role);

@@ -29,7 +29,7 @@ namespace Yipa.UI.Controllers
         [HttpGet]
         public IActionResult AddService()
         {
-            
+
             return View();
         }
 
@@ -38,7 +38,7 @@ namespace Yipa.UI.Controllers
         public IActionResult AddService(Service service)
         {
             _serviceManager.AddService(service);
-            return RedirectToAction("AdminServiceList","Service");
+            return RedirectToAction("AdminServiceList", "Service");
         }
 
 
@@ -84,6 +84,11 @@ namespace Yipa.UI.Controllers
         public IActionResult ServicesDetails()
         {
             return View();
+        }
+        public IActionResult ListMainService()
+        {
+            var serviceList = _serviceManager.GetAll();
+            return View(serviceList);
         }
     }
 }

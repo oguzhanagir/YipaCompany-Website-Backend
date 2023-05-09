@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Yipa.Core.Abstract;
+﻿using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
 namespace Yipa.Business.Concrete
@@ -18,9 +12,9 @@ namespace Yipa.Business.Concrete
             _unitOfWork = unitOfWork;
         }
 
-        public  User GetUserByEmailAndPasswordAsync(string email)
+        public User GetUserByEmailAndPasswordAsync(string email)
         {
-            var user =  _unitOfWork.Users.Find(x => x.Mail == email);
+            var user = _unitOfWork.Users.Find(x => x.Mail == email);
 
             if (user != null)
             {

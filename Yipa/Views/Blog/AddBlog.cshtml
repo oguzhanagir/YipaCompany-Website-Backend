@@ -30,11 +30,11 @@
             }
         </select>
         <br />
-         <select name="Category" class="form-select" aria-label="Select example">
+         <select name="CategoryId" class="form-select" aria-label="Select example">
             <option>Kategori</option>
              @foreach (var category in ViewBag.Categories)
             {
-                <option value="category.Id">@category.Name</option>
+                <option value="@category.Id">@category.Name @category.Id</option>
             }
         </select>
 

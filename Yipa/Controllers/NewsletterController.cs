@@ -31,7 +31,7 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
-      
+
         public IActionResult DeleteNewsletter(int id)
         {
             _newsletterManager.DeleteNewsletter(id);

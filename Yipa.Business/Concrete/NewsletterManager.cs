@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -18,7 +13,7 @@ namespace Yipa.Business.Concrete
         public NewsletterManager(IUnitOfWork unitOfWork, IValidator<Newsletter> validator)
         {
             _unitOfWork = unitOfWork;
-            _validator = validator; 
+            _validator = validator;
         }
 
         public IEnumerable<Newsletter> GetAll()

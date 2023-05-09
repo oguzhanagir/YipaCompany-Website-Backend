@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using Yipa.Business.Concrete;
 using Yipa.Entities.Concrete;
 
@@ -15,7 +9,7 @@ namespace Yipa.UI.Controllers
 {
     public class AuthController : Controller
     {
-   
+
         private readonly AuthManager _userService;
 
         public AuthController(AuthManager userService)
@@ -34,7 +28,7 @@ namespace Yipa.UI.Controllers
             var claimUser = HttpContext.User;
             if (claimUser.Identity!.IsAuthenticated)
             {
-                return RedirectToAction("Index","Admin");
+                return RedirectToAction("Index", "Admin");
             }
             return View();
         }
@@ -44,7 +38,7 @@ namespace Yipa.UI.Controllers
         {
             var userCheck = _userService.GetUserByEmailAndPasswordAsync(user.Mail!);
 
-          if ( userCheck != null)
+            if (userCheck != null)
             {
                 var claims = new List<Claim>()
                 {
@@ -63,7 +57,7 @@ namespace Yipa.UI.Controllers
                 };
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(identity),properties);
+                    new ClaimsPrincipal(identity), properties);
                 return RedirectToAction("Index", "Admin");
             }
             ViewData["ValidateMessage"] = "Kullanıcı Bulunumadı";

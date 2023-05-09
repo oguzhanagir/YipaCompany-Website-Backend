@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -39,7 +34,7 @@ namespace Yipa.Business.Concrete
             return validation;
         }
 
-     
+
         public void DeleteComment(int id)
         {
             var comment = _unitOfWork.Comments.Find(x => x.Id == id);

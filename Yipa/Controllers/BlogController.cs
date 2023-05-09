@@ -9,7 +9,7 @@ namespace Yipa.UI.Controllers
     {
         private readonly BlogManager _blogManager;
         private readonly IWebHostEnvironment _environment;
- 
+
         public BlogController(BlogManager blogManager, IWebHostEnvironment environment)
         {
             _blogManager = blogManager;
@@ -33,19 +33,14 @@ namespace Yipa.UI.Controllers
             return View(blog);
         }
 
-      
+
         public IActionResult PopularBlogs()
         {
             var blogList = _blogManager.GetAll();
             return View(blogList);
         }
 
-        public IActionResult LatesBlog()
-        {
-            var latesBlogs = _blogManager.LatesBlogList();
-            return View(latesBlogs);
-
-        }
+  
 
 
         [Authorize]
@@ -54,9 +49,9 @@ namespace Yipa.UI.Controllers
             var blogList = _blogManager.GetAll();
             if (blogList == null)
             {
-             // Hata Kontrolü Yapılacak   
+                // Hata Kontrolü Yapılacak   
             }
-            
+
             return View(blogList);
         }
 
@@ -81,7 +76,7 @@ namespace Yipa.UI.Controllers
             if (file != null && file.Length > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                var filePath = Path.Combine("/images", fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
@@ -118,7 +113,7 @@ namespace Yipa.UI.Controllers
         }
 
 
-        
+
 
     }
 }

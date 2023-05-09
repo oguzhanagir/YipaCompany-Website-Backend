@@ -51,7 +51,7 @@ namespace Yipa.UI.Controllers
             _aboutManager.AddAbout(about);
             return RedirectToAction("AdminAboutList");
         }
-        
+
         [Authorize]
         [HttpGet]
         public IActionResult UpdateAbout(int id)
@@ -65,12 +65,19 @@ namespace Yipa.UI.Controllers
         public IActionResult UpdateAbout(About about)
         {
             _aboutManager.UpdateAbout(about);
-            return Redirect("AdminAboutList");
+            return RedirectToAction("AdminAboutList", "About");
         }
 
+
+        public IActionResult DeleteAbout(int id)
+        {
+            _aboutManager.DeleteAbout(id);
+            return RedirectToAction("AdminAboutList", "About");
+        }
         public IActionResult GetAboutMain()
         {
-            return View();
+            var aboutMain = _aboutManager.GetAboutById(1);
+            return PartialView("GetAboutMain", aboutMain);
         }
 
         public IActionResult GetExperienceDetail()
@@ -82,7 +89,6 @@ namespace Yipa.UI.Controllers
         {
             return View();
         }
-
 
         public IActionResult Features()
         {

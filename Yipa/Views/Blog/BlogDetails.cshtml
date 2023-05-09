@@ -4,14 +4,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="container" style="margin-top:150px">
+<script src="/lib/jquery/dist/jquery.js"></script>
+<div class="container" style="margin-top:50px; padding:135px">
     <div class="row">
-        <h1 style="font-weight:bold;color:#0E183A;font-size:50px">Agency is a business you hire to outsource</h1>
-
+        <h1 class="text-center" style="font-weight:bold;color:#0E183A;font-size:50px">@Model.Title</h1>
+       
+    <div class="content-blog-details text-center m-auto mt-5">
+        <img class="img-fluid w-75 mt-5" src="@Model.ImagePath" />
+        <p style="margin-top:80px; text-align:start!important; color:rgba(57, 20, 0, 0.64); font-weight:600">@Model.Content</p>
+    </div>
     </div>
 </div>
 
 
 
-@Html.Partial("~/Views/Blog/LatesBlog.cshtml")
+ <div class="lates-blog" style="margin-top:100px;" id="latestBlogs">
+     
+    </div>
+
+
+<script>
+$(document).ready(function() {
+
+
+    var divData2 = $("#latestBlogs");
+    $.ajax({
+        url: '@Url.Action("LatesBlog","Blog")',
+        type: 'GET',
+        dataType: 'html',
+        success: function(data) {
+            divData2.html(data);
+
+        },
+        error: function() {
+            alert("Hata alındı.");
+        }
+    });
+});
+</script>

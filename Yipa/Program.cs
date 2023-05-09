@@ -1,9 +1,6 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Yipa.Business.Concrete;
 using Yipa.Business.Validation.FluentValidation;
 using Yipa.Core.Abstract;
@@ -31,6 +28,8 @@ builder.Services.AddScoped<NewsletterManager>();
 builder.Services.AddScoped<RoleManager>();
 builder.Services.AddScoped<SocialMediaManager>();
 builder.Services.AddScoped<UserManager>();
+builder.Services.AddScoped<ServiceManager>();
+
 
 
 //Fluent Validation
@@ -43,6 +42,7 @@ builder.Services.AddTransient<IValidator<Role>, RoleValidation>();
 builder.Services.AddTransient<IValidator<SocialMedia>, SocialMediaValidation>();
 builder.Services.AddTransient<IValidator<User>, UserValdiation>();
 builder.Services.AddTransient<IValidator<Category>, CategoryValidation>();
+builder.Services.AddTransient<IValidator<Service>, ServiceValidation>();
 
 
 
@@ -51,7 +51,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.LoginPath = "/Auth/Login";
     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 
-     
+
 });
 
 

@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 
 namespace Yipa.Controllers
 {
     public class HomeController : Controller
     {
-         public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -15,7 +14,7 @@ namespace Yipa.Controllers
         {
             return View();
         }
-          
+
 
         public IActionResult Footer()
         {
@@ -23,6 +22,6 @@ namespace Yipa.Controllers
         }
 
 
-       
+
     }
 }

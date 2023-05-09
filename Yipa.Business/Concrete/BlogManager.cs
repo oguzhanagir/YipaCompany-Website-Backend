@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yipa.Core.Abstract;
 using Yipa.Entities.Concrete;
 
@@ -56,7 +51,7 @@ namespace Yipa.Business.Concrete
                 blog.ImagePath = p.ImagePath;
                 blog.Id = p.Id;
                 blog.UserId = p.UserId;
-              
+
                 _unitOfWork.Blogs.Update(blog);
                 _unitOfWork.Save();
             }
@@ -64,7 +59,7 @@ namespace Yipa.Business.Concrete
 
         public void DeleteBlog(int id)
         {
-            var blog = _unitOfWork.Blogs.Find(x=>x.Id == id);
+            var blog = _unitOfWork.Blogs.Find(x => x.Id == id);
 
             if (blog != null)
             {
