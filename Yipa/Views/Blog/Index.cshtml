@@ -1,42 +1,42 @@
-﻿    @model IEnumerable<Yipa.Entities.Concrete.Blog>
+﻿@model IEnumerable<Yipa.Entities.Concrete.Blog>
 
-    @{
-        ViewData["Title"] = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    @Html.Partial("~/Views/Blog/BlogHeader.cshtml")
-    @Html.Partial("~/Views/Blog/PopularBlogs.cshtml")
+@Html.Partial("~/Views/Blog/BlogHeader.cshtml")
+@await Component.InvokeAsync("PopularBlogs")
 
-   
+
 
 
 <div class="blog-list" style="margin-top:100px; margin-bottom:80px">
-      <div class="container">
+    <div class="container">
         <div class="row">
-        
-            @if(Model != null)
-{
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <a href="/Blog/BlogDetails/@item.Id">
-                <img class="img-fluid" src="@item.ImagePath" alt="">
-                <p class="about-subtitle mt-3"></p>
-                <h4 class="about-title pr-3" style="font-size: 24px;">@item.Title</h4>
-                <p class="about-text mt-3">@item.PublicDate</p>
-            </a>
-        </div>
-    }
-}
-else
-{
-    <p>Model is null.</p>
-}
-         
-        </div>
-      </div>
-    </div>
 
-    @Html.Partial("~/Views/Newsletter/MainNewsletter.cshtml")
-    @Html.Partial("~/Views/Home/Footer.cshtml")
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <a href="/Blog/BlogDetails/@item.Id">
+                            <img class="img-fluid" src="@item.ImagePath" alt="">
+                            <p class="about-subtitle mt-3"></p>
+                            <h4 class="about-title pr-3" style="font-size: 24px;">@item.Title</h4>
+                            <p class="about-text mt-3">@item.PublicDate</p>
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Model is null.</p>
+            }
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Newsletter/MainNewsletter.cshtml")
+@Html.Partial("~/Views/Home/Footer.cshtml")

@@ -6,6 +6,8 @@ namespace Yipa.Core.Abstract
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);
+        List<T> List(Expression<Func<T, bool>> where);
         T? Find(Expression<Func<T, bool>> expression);
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);

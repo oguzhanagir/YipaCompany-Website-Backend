@@ -1,44 +1,24 @@
-﻿@model Yipa.Entities.Concrete.Blog
+﻿@model IEnumerable<Yipa.Entities.Concrete.Blog>
 @{
     ViewData["Title"] = "BlogDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="/lib/jquery/dist/jquery.js"></script>
-<div class="container" style="margin-top:50px; padding:135px">
-    <div class="row">
-        <h1 class="text-center" style="font-weight:bold;color:#0E183A;font-size:50px">@Model.Title</h1>
-       
-    <div class="content-blog-details text-center m-auto mt-5">
-        <img class="img-fluid w-75 mt-5" src="@Model.ImagePath" />
-        <p style="margin-top:80px; text-align:start!important; color:rgba(57, 20, 0, 0.64); font-weight:600">@Model.Content</p>
-    </div>
-    </div>
-</div>
-
-
-
- <div class="lates-blog" style="margin-top:100px;" id="latestBlogs">
-     
+@foreach (var item in Model)
+{
+    <div class="container" style="margin-top:50px; padding:135px">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <h1 class="text-center" style="font-weight:bold;color:#0E183A;font-size:50px">@item.Title</h1>
+            </div>
+            <div class="col-lg-12 col-sm-12 content-blog-details text-center m-auto mt-5">
+                <img class="img-fluid w-75 mt-5" src="~/@item.ImagePath" />
+                <p style="margin-top:80px; text-align:start!important; color:rgba(57, 20, 0, 0.64); font-weight:600">@Html.Raw(@item.Content)</p>
+            </div>
+        </div>
     </div>
 
-
-<script>
-$(document).ready(function() {
+}
 
 
-    var divData2 = $("#latestBlogs");
-    $.ajax({
-        url: '@Url.Action("LatesBlog","Blog")',
-        type: 'GET',
-        dataType: 'html',
-        success: function(data) {
-            divData2.html(data);
-
-        },
-        error: function() {
-            alert("Hata alındı.");
-        }
-    });
-});
-</script>
+@await Component.InvokeAsync("LatestBlogs")

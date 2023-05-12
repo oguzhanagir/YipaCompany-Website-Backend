@@ -27,6 +27,7 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
+
         public IActionResult BlogDetails(int id)
         {
             var blog = _blogManager.GetBlogId(id);
@@ -36,7 +37,7 @@ namespace Yipa.UI.Controllers
 
         public IActionResult PopularBlogs()
         {
-            var blogList = _blogManager.GetAll();
+            var blogList = _blogManager.GetPopularBlogs();
             return View(blogList);
         }
 
@@ -76,11 +77,11 @@ namespace Yipa.UI.Controllers
             if (file != null && file.Length > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var filePath = Path.Combine("/images", fileName);
+                var filePath  = "images/" + fileName;
 
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                using (var stream = new FileStream(Path.Combine("wwwroot", filePath), FileMode.Create))
                 {
-                    await file.CopyToAsync(fileStream);
+                    await file.CopyToAsync(stream);
                 }
                 p.ImagePath = filePath;
             }
@@ -94,6 +95,8 @@ namespace Yipa.UI.Controllers
         public IActionResult UpdateBlog(int id)
         {
             var blog = _blogManager.GetBlogId(id);
+            ViewBag.Authors = _blogManager.GetUsers();
+            ViewBag.Categories = _blogManager.GetCategories();
             return View(blog);
         }
 

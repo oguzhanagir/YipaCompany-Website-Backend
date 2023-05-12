@@ -19,14 +19,15 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <a href="/Blog/BlogDetails/@item.Id">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <img class="img-fluid" src="@item.ImagePath" alt="">
-                        <p class="about-subtitle mt-3">@item.CategoryId</p>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <a href="/Blog/BlogDetails/@item.Id">
+                        <img class="img-fluid w-75" src="~/@item.ImagePath" alt="">
+                        <p class="about-subtitle mt-3">@item.Category!.Name</p>
                         <h4 class="about-title pr-3" style="font-size: 24px;">@item.Title</h4>
                         <p class="about-text mt-3">5 Nov, 2021</p>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
             }
 

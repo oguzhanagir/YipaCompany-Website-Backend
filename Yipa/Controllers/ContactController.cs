@@ -34,15 +34,31 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult AddContact(Contact contact)
+        
+
+
+        [HttpGet]
+        public IActionResult ContactFormDetails()
         {
             return View();
         }
 
-        public IActionResult ContactFormDetails()
+        [HttpPost]
+        public async Task<IActionResult> ContactFormDetails(Contact contact)
         {
-            return View();
+            try
+            {
+                await _contactManager.SendEmailAsync(contact);
+                TempData["AlertMessage"] = "Başarıyla Gönderildi";
+                return RedirectToAction("Index", "Contact");
+            }
+            catch (Exception ex)
+            {
+
+                TempData["ErrorMessage"] = "E-posta gönderme hatası: " + ex.Message;
+                return RedirectToAction("Index", "Contact");
+            }
+           
         }
         public IActionResult ContactFAQ()
         {

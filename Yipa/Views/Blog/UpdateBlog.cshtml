@@ -1,45 +1,53 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "UpdateBlog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="row">
-        @using (Html.BeginForm("UpdateBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+    @using (Html.BeginForm("UpdateBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
         <div class="mb-10">
-        <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
-        <input type="text" class="form-control" placeholder="Başlık"/>
+            <label for="exampleFormControlInput1" class="required form-label">Başlık</label>
+            <input type="text" name="Title" class="form-control" placeholder="Başlık" />
         </div>
         <div class="mb-10">
-        <label for="exampleFormControlInput1" class="required form-label">Tarih</label>
-        <input type="datetime-local" class="form-control " placeholder="Tarih"/>
+            <label for="exampleFormControlInput1" class="required form-label">Tarih</label>
+            <input type="datetime-local" name="PublicDate" class="form-control " placeholder="Tarih" />
         </div>
-        <select class="form-select" aria-label="Select example">
+
+        <select class="form-select" name="UserId" aria-label="Yazar Bilgisi">
             <option>Yazar</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            @foreach (var author in ViewBag.Authors)
+            {
+                <option value="@author.Id">@author.FirstName @author.LastName</option>
+            }
+        </select>
+        <br />
+        <select name="CategoryId" class="form-select" aria-label="Select example">
+            <option>Kategori</option>
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.Id">@category.Name @category.Id</option>
+            }
         </select>
 
         <label for="exampleFormControlInput1" class="required form-label">İçerik</label>
-         <div id="toolbar-container"></div>
-        <div class="mt-5 form-control" id="editor"></div>
+        <div id="toolbar-container"></div>
+
+        <textarea name="Content" id="editor">
+                &lt;p&gt;This is some sample content.&lt;/p&gt;
+               </textarea>
+
         <button href="#" class="btn btn-primary mt-5">Ekle</button>
-}
+    }
 </div>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/decoupled-document/ckeditor.js"></script>
 
 <script>
-    DecoupledEditor
-        .create( document.querySelector( '#editor' ) )
-        .then( editor => {
-            const toolbarContainer = document.querySelector( '#toolbar-container' );
-
-            toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>

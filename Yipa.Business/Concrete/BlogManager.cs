@@ -18,7 +18,7 @@ namespace Yipa.Business.Concrete
 
         public IEnumerable<Blog> GetAll()
         {
-            var blogList = _unitOfWork.Blogs.GetAll();
+            var blogList = _unitOfWork.Blogs.GetAll(x=>x.Category!);
             return blogList;
         }
 
@@ -68,9 +68,9 @@ namespace Yipa.Business.Concrete
             }
         }
 
-        public Blog GetBlogId(int id)
+        public List<Blog> GetBlogId(int id)
         {
-            var blog = _unitOfWork.Blogs.Find(x => x.Id == id);
+            var blog = _unitOfWork.Blogs.List(x => x.Id == id);
             return blog!;
         }
 
@@ -80,6 +80,14 @@ namespace Yipa.Business.Concrete
             return latestBlogs;
         }
 
+        public IEnumerable<Blog> GetPopularBlogs()
+        {
+            var latestBlogs = _unitOfWork.Blogs.GetAll().OrderByDescending(b => b.PublicDate).Take(2); // Popular Blog Listelenecektir.
+            return latestBlogs;
+        }
+
+
+    
         public IEnumerable<User> GetUsers()
         {
             var userList = _unitOfWork.Users.GetAll();
