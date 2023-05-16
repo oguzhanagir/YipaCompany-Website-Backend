@@ -25,6 +25,13 @@ namespace Yipa.UI.Controllers
             return View(serviceList);
         }
 
+        public IActionResult ServiceDetails(int id)
+        {
+            var service = _serviceManager.GetServiceId(id);
+            return View(service);
+        }
+
+
         [Authorize]
         [HttpGet]
         public IActionResult AddService()

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,6 +6,19 @@
 @Html.Partial("~/Views/Service/HeaderService.cshtml")
 @Html.Partial("~/Views/Service/ServiceAbout.cshtml")
 @Html.Partial("~/Views/Service/ServicesDetails.cshtml")
+<div class="agency" style="margin-top: 150px; margin-bottom:80px;" id="listService">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <h3 class="about-title pl-5" style="font-size: 40px; font-weight: 800;">How Our Agency <br>Can Help</h3>
+            </div>
+                @await Component.InvokeAsync("ListMainService")
+
+        </div>
+    </div>
+</div>
+<div class="mt-5">
+</div>
 @Html.Partial("~/Views/Newsletter/MainNewsletter.cshtml")
 @Html.Partial("~/Views/Home/Footer.cshtml")
 

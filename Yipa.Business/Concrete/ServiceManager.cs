@@ -58,9 +58,9 @@ namespace Yipa.Business.Concrete
             }
         }
 
-        public Service GetServiceId(int id)
+        public List<Service> GetServiceId(int id)
         {
-            var service = _unitOfWork.Services.Find(x => x.Id == id);
+            var service = _unitOfWork.Services.List(x => x.Id == id);
             return service!;
         }
     }
