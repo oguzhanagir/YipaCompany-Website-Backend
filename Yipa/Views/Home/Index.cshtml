@@ -5,32 +5,38 @@
 
 <partial name="~/Views/Home/Header.cshtml"></partial>
 
-@await Component.InvokeAsync("GetAboutMain")
 
 
 <partial name="~/Views/About/HowWorkDetails.cshtml"></partial>
 
 <partial name="~/Views/About/Features.cshtml"></partial>
-
-<partial name="~/Views/Newsletter/MainNewsletter.cshtml"></partial>
-
-<div class="agency" style="margin-top: 150px; margin-bottom:50px;" id="listService">
+<div class="agency" style="margin-top: 150px; margin-bottom:150px;" id="listService">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-sm-12">
-                <h3 class="about-title pl-5" style="font-size: 40px; font-weight: 800;">How Our Agency <br>Can Help</h3>
-                <a href="/Service/Index" class="float-right mt-3 btn button-light bg-transparent pl-4 pr-4 pt-2 pb-2 mt-3">Daha Fazlası</a>
+            <div class="col-lg-6 col-sm-6">
+                <h3 class="about-title pl-5" style="font-size: 40px; font-weight: 800;">Hizmetlerimiz</h3>
+               
 
             </div>
+            <div class="col-lg-6 col-sm-6">
+             <a href="/Service/Index" class="float-right btn button-light bg-transparent pl-4 pr-4 pt-2 pb-2 mt-2">Daha Fazlası</a>
+             </div>
                 @await Component.InvokeAsync("ListMainService")
 
         </div>
     </div>
 </div>
+@await Component.InvokeAsync("LatestBlogs")
+<partial name="~/Views/Newsletter/MainNewsletter.cshtml"></partial>
 
+
+
+@await Component.InvokeAsync("GetAboutMain")
 <partial name="~/Views/About/FAQ.cshtml"></partial>
 
-@await Component.InvokeAsync("LatestBlogs")
+<div style="margin-bottom:150px;">
+
+</div>
 
 <partial name="~/Views/Contact/ContactFormDetails.cshtml"></partial>
 

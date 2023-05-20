@@ -14,6 +14,7 @@ namespace Yipa.Business.Concrete
         {
             _unitOfWork = unitOfWork;
             _validator = validator;
+          
         }
 
         public IEnumerable<Blog> GetAll()
@@ -26,6 +27,27 @@ namespace Yipa.Business.Concrete
         {
             var blogList = await _unitOfWork.Blogs.GetAllAsync();
             return blogList;
+        }
+
+        public IEnumerable<Blog> GetAllByCategory(int categoryId)
+        {
+            try
+            {
+                if (categoryId == 0)
+                {
+                    var blogList = _unitOfWork.Blogs.GetAll(x => x.Category!);
+                    return blogList;
+                }
+                else
+                {
+                    var blogList = _unitOfWork.Blogs.GetAll(x => x.Category!).Where(y => y.CategoryId == categoryId);
+                    return blogList;
+                }
+            }
+            catch (Exception excep)
+            {
+                throw new Exception("Hata oluştu: " + excep.Message);
+            }
         }
 
         public ValidationResult AddBlog(Blog blog)
@@ -99,6 +121,8 @@ namespace Yipa.Business.Concrete
             var categoryList = _unitOfWork.Categories.GetAll();
             return categoryList;
         }
+
+      
 
 
     }

@@ -3,7 +3,9 @@ body{
     font-family: sans-serif;
 }
 
-
+a:hover{
+    text-decoration:none;
+}
 
 
 /* Navbar Start  */
@@ -124,4 +126,10 @@ margin-top: 140px;
     width: 1144px;
     height: 400px;
     border-radius: 50px;
+}
+
+#categoryName:hover {
+    text-decoration: none;
+    color: #391400;
+    font-weight: bold;
 }

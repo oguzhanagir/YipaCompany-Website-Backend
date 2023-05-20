@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<Yipa.Entities.Concrete.Blog>
+@using X.PagedList;
+@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 
 @{
     ViewData["Title"] = "Index";
@@ -11,11 +15,14 @@
 
 
 
-<div class="blog-list" style="margin-top:100px; margin-bottom:80px">
+<div class="blog-list" id="blogList" style="margin-top:100px; margin-bottom:80px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <h2 class="about-title mb-5">Tüm Bloglar</h2>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                @await Component.InvokeAsync("CategoryList")
             </div>
             @if (Model != null)
             {
@@ -36,9 +43,17 @@
                 <p>Model is null.</p>
             }
 
+            <div class="col-lg-12 col-sm-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+ @Html.PagedListPager((IPagedList)Model!, page => Url.Action("Index", "Blog", new { page }))</ul>
+                </nav>
+            </div>
         </div>
+
     </div>
 </div>
+
 
 @Html.Partial("~/Views/Newsletter/MainNewsletter.cshtml")
 @Html.Partial("~/Views/Home/Footer.cshtml")

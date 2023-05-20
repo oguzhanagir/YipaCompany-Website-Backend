@@ -50,13 +50,13 @@ namespace Yipa.UI.Controllers
             {
                 await _contactManager.SendEmailAsync(contact);
                 TempData["AlertMessage"] = "Başarıyla Gönderildi";
-                return RedirectToAction("Index", "Contact");
+                return RedirectToAction("");
             }
             catch (Exception ex)
             {
 
                 TempData["ErrorMessage"] = "E-posta gönderme hatası: " + ex.Message;
-                return RedirectToAction("Index", "Contact");
+                return RedirectToAction("");
             }
            
         }

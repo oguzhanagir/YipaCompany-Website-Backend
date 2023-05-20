@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Yipa.Entities.Concrete.Category>
+
+
+
+
+<div class="container mb-4 mt-4">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2 col-sm-2">
+                <a href="javascript:void(0);" onclick="loadBlogs(@item.Id)" class="about-title" id="categoryName" style="">@item.Name</a>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function loadBlogs(categoryId) {
+        $.ajax({
+            url: '/Blog/Index/' + categoryId,
+            type: 'GET',
+            success: function(data) {
+                $('#blogList').html(data);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+</script>

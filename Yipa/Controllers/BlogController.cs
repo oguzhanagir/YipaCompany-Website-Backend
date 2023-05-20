@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 using Yipa.Business.Concrete;
 using Yipa.Entities.Concrete;
 
@@ -16,9 +17,13 @@ namespace Yipa.UI.Controllers
             _environment = environment;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page, int id=0)
         {
-            var blogList = _blogManager.GetAll();
+            var pageNumber = page ?? 1;
+            var blogList = _blogManager.GetAllByCategory(id).ToPagedList(pageNumber,1);
+       
+         
+         
             return View(blogList);
         }
 
