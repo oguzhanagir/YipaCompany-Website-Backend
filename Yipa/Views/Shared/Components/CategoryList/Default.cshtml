@@ -7,8 +7,8 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-lg-2 col-sm-2">
-                <a href="javascript:void(0);" onclick="loadBlogs(@item.Id)" class="about-title" id="categoryName" style="">@item.Name</a>
+            <div class="col-lg-2 col-sm-2 text-center d-flex">
+                <a href="javascript:void(0);" onclick="loadBlogs(@item.Id)" class="about-title p-2  text-light" id="categoryName" style="background-color:#104454;border-radius:12px;text-align:center">@item.Name</a>
             </div>
         }
     </div>

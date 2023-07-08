@@ -3,6 +3,7 @@ using Yipa.Business.Concrete;
 
 namespace Yipa.UI.ViewComponents
 {
+    [ViewComponent]
     public class GetAboutMain : ViewComponent
     {
         private readonly AboutManager _aboutManager;

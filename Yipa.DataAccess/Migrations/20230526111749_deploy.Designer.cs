@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yipa.DataAccess.Concrete;
 
@@ -11,9 +12,11 @@ using Yipa.DataAccess.Concrete;
 namespace Yipa.DataAccess.Migrations
 {
     [DbContext(typeof(YipaDbContext))]
-    partial class YipaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230526111749_deploy")]
+    partial class deploy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,9 +220,6 @@ namespace Yipa.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SubContent")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

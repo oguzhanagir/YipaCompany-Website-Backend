@@ -15,6 +15,7 @@ builder.Services.AddDbContext<YipaDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //Businees Classes

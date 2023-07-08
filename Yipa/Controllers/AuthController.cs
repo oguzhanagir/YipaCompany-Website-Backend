@@ -65,7 +65,10 @@ namespace Yipa.UI.Controllers
 
         }
 
-
+        public IActionResult Register()
+        {
+            return View();
+        }
 
 
 

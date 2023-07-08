@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Yipa.Entities.Concrete.Blog>
 
 
-<div class="popular-blog mx-auto my-auto" style="margin-top:50px!important;">
+<div class="popular-blog mx-auto p-5 my-auto" style="margin-top:100px!important;background-color:#104454">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-sm-12">
-                <h2 class="about-title mb-5">Popular Bloglar</h2>
+                <h2 class="about-title text-light mb-5">Popular Bloglar</h2>
             </div>
             @foreach (var item in Model)
             {
@@ -13,8 +13,8 @@
                     <a href="/Blog/BlogDetails/@item.Id">
                         <img class="img-fluid w-75" src="~/@item.ImagePath" alt="">
                         <p class="about-subtitle mt-3"></p>
-                        <h4 class="about-title pr-3" style="font-size: 24px;">@item.Title</h4>
-                        <p class="about-text mt-3">@item.PublicDate</p>
+                        <h4 class="about-title text-light pr-3" style="font-size: 24px;">@item.Title</h4>
+                        <p class="about-text text-light mt-3">@item.PublicDate</p>
                     </a>
                 </div>
             }

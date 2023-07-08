@@ -3,6 +3,7 @@ using Yipa.Business.Concrete;
 
 namespace Yipa.UI.ViewComponents
 {
+    [ViewComponent]
     public class LatestBlogs : ViewComponent
     {
         private readonly BlogManager _blogManager;

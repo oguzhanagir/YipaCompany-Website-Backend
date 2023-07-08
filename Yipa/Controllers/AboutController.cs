@@ -80,12 +80,9 @@ namespace Yipa.UI.Controllers
             return PartialView("GetAboutMain", aboutMain);
         }
 
-        public IActionResult GetExperienceDetail()
-        {
-            return View();
-        }
+       
 
-        public IActionResult HowWorkDetails()
+        public IActionResult OurCompany()
         {
             return View();
         }
@@ -95,20 +92,14 @@ namespace Yipa.UI.Controllers
             return View();
         }
 
-        public IActionResult AgencyDetails()
+        public IActionResult TeamSection()
         {
             return View();
         }
 
-        public IActionResult GetStarted()
-        {
-            return View();
-        }
 
-        public IActionResult FAQ()
-        {
-            return View();
-        }
+
+
 
 
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 
-namespace Yipa.Controllers
+namespace Yipa.UI.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,6 +20,12 @@ namespace Yipa.Controllers
         {
             return View();
         }
+
+        public IActionResult ContactInfo()
+        {
+            return View();
+        }
+
 
 
 

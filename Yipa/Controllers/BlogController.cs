@@ -49,7 +49,7 @@ namespace Yipa.UI.Controllers
   
 
 
-        [Authorize]
+    
         public IActionResult AdminBlogList()
         {
             var blogList = _blogManager.GetAll();
